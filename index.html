@@ -892,34 +892,45 @@
       </div>
     </div>
 
-    <!-- Project 2 -->
-    <div class="project-card fade-in">
-      <div>
-        <div class="project-num">PROJECT / 02</div>
-        <div class="project-name">CI/CD Pipeline with Quality Gates</div>
-        <div class="project-desc">
-          End-to-end Jenkins pipeline: GitHub push → SonarQube scan → Docker build → push to Docker Hub → deploy to Kubernetes. Includes rollback logic, Slack notifications, and declarative pipeline stages.
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">Jenkins</span>
-          <span class="stack-tag">Docker</span>
-          <span class="stack-tag">Kubernetes</span>
-          <span class="stack-tag">SonarQube</span>
-          <span class="stack-tag">Docker Hub</span>
-          <span class="stack-tag">GitHub</span>
-        </div>
-        <span class="project-status status-building">⬡ Building</span>
-      </div>
-      <div class="project-links">
-        <a href="#" class="proj-link">⌥ GitHub →</a>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-item">Declarative Jenkinsfile with 6-stage pipeline</div>
-        <div class="highlight-item">SonarQube quality gate blocks bad code from deploying</div>
-        <div class="highlight-item">Automated Docker image tagging with git commit SHA</div>
-        <div class="highlight-item">Zero-downtime rolling deployments on Kubernetes</div>
-      </div>
+<!-- Project 2 -->
+<div class="project-card fade-in">
+  <div>
+    <div class="project-num">PROJECT / 02</div>
+    <div class="project-name">CI/CD Pipeline for 3-Tier Web Application</div>
+
+    <div class="project-desc">
+      Designed and implemented an end-to-end CI/CD pipeline on Google Cloud Platform using Jenkins to automate the deployment of a containerized 3-tier application. 
+      The pipeline integrates GitHub webhooks to trigger builds, performs Docker-based builds, deploys services using Docker Compose, and validates deployment with automated health checks.
     </div>
+
+    <div class="project-stack">
+      <span class="stack-tag">Jenkins</span>
+      <span class="stack-tag">Docker</span>
+      <span class="stack-tag">Docker Compose</span>
+      <span class="stack-tag">GCP</span>
+      <span class="stack-tag">React</span>
+      <span class="stack-tag">Node.js</span>
+      <span class="stack-tag">MongoDB</span>
+      <span class="stack-tag">GitHub</span>
+    </div>
+
+    <span class="project-status status-complete">✔ Completed</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://github.com/VaibhavSoun/3-tier-app-deploy-with-jenkins" target="_blank" class="proj-link">
+      ⌥ GitHub →
+    </a>
+  </div>
+
+  <div class="project-highlights">
+    <div class="highlight-item">Automated CI/CD pipeline triggered via GitHub webhook</div>
+    <div class="highlight-item">Deployed full 3-tier architecture using Docker Compose</div>
+    <div class="highlight-item">Resolved Jenkins ↔ Docker container integration challenges</div>
+    <div class="highlight-item">Implemented health checks to validate application availability</div>
+    <div class="highlight-item">Deployed application on GCP VM with public access</div>
+  </div>
+</div>
 
     <!-- Project 3 -->
     <div class="project-card fade-in">
