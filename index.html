@@ -402,7 +402,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 1rem;
-    align-start: start;
+    align-items: start;
   }
 
   .project-card:hover {
@@ -513,6 +513,11 @@
   }
 
   /* ── EXPERIENCE ── */
+  .exp-stack {
+    display: grid;
+    gap: 1.5rem;
+  }
+
   .exp-card {
     background: var(--bg3);
     border: 1px solid var(--border);
@@ -520,6 +525,12 @@
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .exp-card:hover {
+    border-color: rgba(0,255,157,0.2);
+    box-shadow: 0 0 30px rgba(0,255,157,0.04);
   }
 
   .exp-card::after {
@@ -529,6 +540,10 @@
     width: 3px;
     height: 100%;
     background: linear-gradient(to bottom, var(--green), var(--cyan));
+  }
+
+  .exp-card.freelance::after {
+    background: linear-gradient(to bottom, var(--orange), var(--cyan));
   }
 
   .exp-header {
@@ -553,6 +568,17 @@
     margin-top: 2px;
   }
 
+  .exp-card.freelance .exp-company {
+    color: var(--orange);
+  }
+
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
   .exp-date {
     font-size: 11px;
     color: var(--text-dim);
@@ -560,6 +586,27 @@
     border: 1px solid var(--border);
     padding: 4px 10px;
     border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .exp-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .badge-current {
+    background: rgba(0,255,157,0.1);
+    color: var(--green);
+    border: 1px solid rgba(0,255,157,0.25);
+  }
+
+  .badge-prev {
+    background: rgba(90,122,128,0.1);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
   }
 
   .exp-bullets {
@@ -581,6 +628,10 @@
     color: var(--green);
     flex-shrink: 0;
     margin-top: 1px;
+  }
+
+  .exp-card.freelance .exp-bullets li::before {
+    color: var(--orange);
   }
 
   /* ── CONTACT ── */
@@ -676,6 +727,7 @@
     nav { padding: 0 1rem; }
     .nav-links { gap: 1rem; }
     .nav-status { display: none; }
+    .exp-meta { align-items: flex-start; }
   }
 
   /* Glitch effect on name hover */
@@ -765,9 +817,11 @@
       <div class="skill-category">Cloud & Orchestration</div>
       <div class="skill-tags">
         <span class="tag">AWS EKS</span>
+        <span class="tag">GCP</span>
         <span class="tag">Kubernetes</span>
         <span class="tag">Docker</span>
         <span class="tag">AWS ALB</span>
+        <span class="tag">k3s</span>
       </div>
     </div>
     <div class="skill-card">
@@ -776,6 +830,8 @@
         <span class="tag">Jenkins</span>
         <span class="tag">GitLab CI</span>
         <span class="tag">GitHub Actions</span>
+        <span class="tag">ArgoCD</span>
+        <span class="tag">Helm</span>
         <span class="tag">SonarQube</span>
       </div>
     </div>
@@ -808,246 +864,11 @@
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-category">App Platforms</div>
+      <div class="skill-category">App Platforms & AI</div>
       <div class="skill-tags">
         <span class="tag">Django</span>
         <span class="tag">PostgreSQL</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Python</span>
         <span class="tag">Docker Compose</span>
-        <span class="tag">Microservices</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header fade-in">
-    <span class="section-num">02.</span>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- Project 1 -->
-    <div class="project-card fade-in">
-      <div>
-        <div class="project-num">PROJECT / 01</div>
-        <div class="project-name">CI/CD Pipeline → GKE Deployment</div>
-
-        <!-- Live demo banner -->
-        <div style="display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px 14px;background:rgba(0,255,157,0.06);border:1px solid rgba(0,255,157,0.2);border-radius:4px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0;"></span>
-          <span style="font-size:11px;color:var(--green);letter-spacing:0.05em;">LIVE DEMO</span>
-          <a href="http://35.200.216.69" target="_blank" style="font-size:11px;color:var(--text);text-decoration:none;margin-left:auto;border:1px solid var(--border);padding:2px 10px;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">35.200.216.69 ↗</a>
-          <a href="http://35.200.216.69/health" target="_blank" style="font-size:11px;color:var(--text);text-decoration:none;border:1px solid var(--border);padding:2px 10px;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">/health ↗</a>
-        </div>
-
-        <div class="project-desc">
-          End-to-end DevOps project built entirely from GCP Cloud Shell — no local setup. Wrote a containerized Flask API, provisioned a GKE Autopilot cluster and Artifact Registry on GCP using Terraform IaC, built a multi-stage Docker image, pushed it to GCP Artifact Registry, and deployed to Kubernetes with zero-downtime rolling updates, liveness/readiness probes, and HPA auto-scaling. The app is live on a public LoadBalancer IP.
-        </div>
-
-        <!-- Architecture flow -->
-        <div style="margin:14px 0;padding:12px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;font-size:11px;color:var(--text-dim);line-height:2;">
-          <div style="color:var(--green);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">END-TO-END FLOW</div>
-          <span style="color:var(--cyan);">Cloud Shell</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span>Terraform</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span style="color:var(--cyan);">GKE Autopilot + Artifact Registry</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span>Docker Build</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span style="color:var(--cyan);">Push to GCR</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span>kubectl apply</span>
-          <span style="color:var(--text-muted);"> → </span>
-          <span style="color:var(--green);">Live on Internet ✓</span>
-        </div>
-
-        <div class="project-stack">
-          <span class="stack-tag">GKE Autopilot</span>
-          <span class="stack-tag">Terraform</span>
-          <span class="stack-tag">Docker</span>
-          <span class="stack-tag">Artifact Registry</span>
-          <span class="stack-tag">Kubernetes</span>
-          <span class="stack-tag">GCP</span>
-          <span class="stack-tag">Flask</span>
-          <span class="stack-tag">HPA</span>
-        </div>
-        <span class="project-status status-live">✓ Live on GKE</span>
-      </div>
-      <div class="project-links">
-        <a href="http://35.200.216.69" target="_blank" class="proj-link">⌥ Live Demo →</a>
-        <a href="http://35.200.216.69/health" target="_blank" class="proj-link">♥ Health →</a>
-        <a href="https://github.com/VaibhavSoun/GKE-Deployment-via-Terraform" target="_blank" class="proj-link">⌥ GitHub →</a>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-item">Provisioned VPC, GKE Autopilot cluster, and Artifact Registry from scratch using Terraform — remote state stored in GCS bucket</div>
-        <div class="highlight-item">Multi-stage Dockerfile with non-root user, built-in health check, and Gunicorn production server</div>
-        <div class="highlight-item">Kubernetes deployment with rolling update strategy (maxUnavailable: 0) — zero downtime on every redeploy</div>
-        <div class="highlight-item">HorizontalPodAutoscaler scales pods from 2 to 5 automatically based on CPU and memory thresholds</div>
-        <div class="highlight-item">Liveness and readiness probes on /health and /ready — Kubernetes auto-restarts unhealthy pods</div>
-        <div class="highlight-item">Entire project built and deployed from GCP Cloud Shell — zero local machine setup required</div>
-      </div>
-    </div>
-
-<!-- Project 2 -->
-<div class="project-card fade-in">
-  <div>
-    <div class="project-num">PROJECT / 02</div>
-    <div class="project-name">CI/CD Pipeline for 3-Tier Web Application</div>
-
-    <div class="project-desc">
-      Designed and implemented an end-to-end CI/CD pipeline on Google Cloud Platform using Jenkins to automate the deployment of a containerized 3-tier application. 
-      The pipeline integrates GitHub webhooks to trigger builds, performs Docker-based builds, deploys services using Docker Compose, and validates deployment with automated health checks.
-    </div>
-
-    <div class="project-stack">
-      <span class="stack-tag">Jenkins</span>
-      <span class="stack-tag">Docker</span>
-      <span class="stack-tag">Docker Compose</span>
-      <span class="stack-tag">GCP</span>
-      <span class="stack-tag">React</span>
-      <span class="stack-tag">Node.js</span>
-      <span class="stack-tag">MongoDB</span>
-      <span class="stack-tag">GitHub</span>
-    </div>
-
-    <span class="project-status status-complete">✔ Completed</span>
-  </div>
-
-  <div class="project-links">
-    <a href="https://github.com/VaibhavSoun/3-tier-app-deploy-with-jenkins" target="_blank" class="proj-link">
-      ⌥ GitHub →
-    </a>
-  </div>
-
-  <div class="project-highlights">
-    <div class="highlight-item">Automated CI/CD pipeline triggered via GitHub webhook</div>
-    <div class="highlight-item">Deployed full 3-tier architecture using Docker Compose</div>
-    <div class="highlight-item">Resolved Jenkins ↔ Docker container integration challenges</div>
-    <div class="highlight-item">Implemented health checks to validate application availability</div>
-    <div class="highlight-item">Deployed application on GCP VM with public access</div>
-  </div>
-</div>
-
-    <!-- Project 3 -->
-    <div class="project-card fade-in">
-      <div>
-        <div class="project-num">PROJECT / 03</div>
-        <div class="project-name">Infrastructure as Code with Terraform</div>
-        <div class="project-desc">
-          Terraform modules to provision a full GKE cluster on GCP free tier — VPC, subnets, node pools, IAM, and ingress. Demonstrates IaC principles with state management, modules, and environment separation.
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">Terraform</span>
-          <span class="stack-tag">GCP</span>
-          <span class="stack-tag">GKE</span>
-          <span class="stack-tag">Kubernetes</span>
-          <span class="stack-tag">Helm</span>
-        </div>
-        <span class="project-status status-building">⬡ Building</span>
-      </div>
-      <div class="project-links">
-        <a href="#" class="proj-link">⌥ GitHub →</a>
-      </div>
-      <div class="project-highlights">
-        <div class="highlight-item">Reusable Terraform modules for VPC, GKE, IAM</div>
-        <div class="highlight-item">Remote state with GCS backend and state locking</div>
-        <div class="highlight-item">Separate dev/staging/prod workspaces</div>
-        <div class="highlight-item">Integrated with CI/CD via terraform plan/apply in pipeline</div>
-      </div>
-    </div>
-
-
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header fade-in">
-    <span class="section-num">03.</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="exp-card fade-in">
-    <div class="exp-header">
-      <div>
-        <div class="exp-role">Solution Developer</div>
-        <div class="exp-company">Tata Technologies</div>
-      </div>
-      <div class="exp-date">Aug 2023 – Mar 2026 · Thane, MH</div>
-    </div>
-    <ul class="exp-bullets">
-      <li>Designed and deployed containerized applications using Docker across self-managed Kubernetes clusters and AWS EKS, ensuring high availability in production.</li>
-      <li>Managed AWS EKS clusters end-to-end — node groups, IAM roles, version upgrades — maintaining consistent uptime for critical workloads.</li>
-      <li>Configured AWS Application Load Balancers (ALB) to distribute traffic across microservices, improving fault tolerance and resilience.</li>
-      <li>Built and maintained CI/CD pipelines using Jenkins and GitLab CI/CD, automating build, test, and deploy workflows to reduce manual release effort.</li>
-      <li>Led end-to-end migration of on-premises apps to AWS EKS using rolling deployment strategies to eliminate production downtime.</li>
-      <li>Implemented centralized logging with the Elastic Stack and Kibana, accelerating root cause analysis during incidents.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header fade-in" style="justify-content:center; text-align:center; flex-direction:column; gap:0.5rem;">
-    <span class="section-num">04.</span>
-    <h2 class="section-title">Get In Touch</h2>
-  </div>
-  <div class="contact-card fade-in">
-    <p class="contact-intro">
-      Open to DevOps, Platform Engineering, and SRE roles.<br/>
-      Based in Jaipur — open to remote and relocation.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:sounvaibhavjpr@gmail.com" class="contact-item">✉ sounvaibhavjpr@gmail.com</a>
-      <a href="tel:+918955860972" class="contact-item">✆ +91 8955860972</a>
-      <a href="https://linkedin.com" target="_blank" class="contact-item">in LinkedIn</a>
-      <a href="https://github.com" target="_blank" class="contact-item">⌥ GitHub</a>
-    </div>
-    <a href="mailto:sounvaibhavjpr@gmail.com" class="btn btn-primary" style="margin-top:1rem;">Say Hello →</a>
-  </div>
-</section>
-
-<footer>
-  <p>Built by <span>Vaibhav Singh Soun</span> · DevOps Engineer · Jaipur, India</p>
-  <p style="margin-top:4px;">Hosted on GitHub Pages</p>
-</footer>
-
-<script>
-  // Typing effect
-  const phrases = [
-    'kubectl apply -f production.yaml',
-    'docker build -t app:latest .',
-    'terraform apply --auto-approve',
-    'jenkins pipeline --trigger release',
-    'grafana dashboard --alerts-active'
-  ];
-  let pi = 0, ci = 0, deleting = false;
-  const el = document.getElementById('typing-text');
-
-  function type() {
-    const phrase = phrases[pi];
-    if (!deleting) {
-      el.textContent = phrase.slice(0, ++ci);
-      if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
-    } else {
-      el.textContent = phrase.slice(0, --ci);
-      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-    }
-    setTimeout(type, deleting ? 40 : 80);
-  }
-  type();
-
-  // Scroll fade-in
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+  
